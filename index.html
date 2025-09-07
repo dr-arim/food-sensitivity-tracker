@@ -8,12 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1>Week 1 — Gut Baseline Journal</h1>
-            <p class="subtitle">7-Day Symptom & Trigger Tracking System</p>
-        </header>
-
-        <!-- Patient Registration Section -->
+      <header class="header">
+    <h1>Welcome to Dr Arim's Gut Reset Club</h1>
+    <p class="subtitle">Week 1 — Gut Baseline Journal</p>
+    <p class="subtitle">7-Day Symptom & Trigger Tracking System by Dr Arim</p>
+</header>
+<!-- Patient Registration Section -->
         <section class="card" id="registration-section">
             <div class="card__header">
                 <h2>Patient Registration</h2>
@@ -40,6 +40,87 @@
                 </form>
             </div>
         </section>
+<!-- Red-Flag Checklist Section -->
+<section class="card" id="red-flag-section" style="display: none;">
+    <div class="card-header" style="background-color: #fee2e2; border-color: #fca5a5;">
+        <h2 style="color: #991b1b;">⚠️ Part B: Red-Flag Checklist (Self-Screening)</h2>
+    </div>
+    <div class="card-body">
+        <p style="font-weight: 600; color: #991b1b; margin-bottom: 1.5rem;">
+            Please answer the following questions honestly. Dr Arim recommends immediate medical consultation if any answer is YES.
+        </p>
+        
+        <form id="red-flag-form">
+            <div class="form-group">
+                <label class="red-flag-question">Any blood in stool/vomit?</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="blood" value="yes" required> Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="blood" value="no" required> No
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="red-flag-question">Difficulty swallowing?</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="swallowing" value="yes" required> Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="swallowing" value="no" required> No
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="red-flag-question">Severe weight loss in last 2 months?</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="weightloss" value="yes" required> Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="weightloss" value="no" required> No
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="red-flag-question">Night-time choking/cough?</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="choking" value="yes" required> Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="choking" value="no" required> No
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="red-flag-question">Persistent chest pain?</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="chestpain" value="yes" required> Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="chestpain" value="no" required> No
+                    </label>
+                </div>
+            </div>
+
+            <div style="background-color: #fef3c7; padding: 1rem; border-radius: 8px; margin: 1.5rem 0;">
+                <p style="font-weight: 600; color: #92400e; margin: 0;">
+                    👉 <strong>Dr Arim's Instruction:</strong> "If any answer = YES → consult your doctor offline immediately before continuing."
+                </p>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Continue to Symptom Tracking</button>
+        </form>
+    </div>
+</section>
 
         <!-- Progress Indicator -->
         <section class="progress-section" id="progress-section" style="display: none;">
@@ -252,6 +333,37 @@
             <span class="toast-message" id="toast-message"></span>
         </div>
     </div>
+    <!-- Disclaimer Section -->
+<footer class="disclaimer-section">
+    <div class="card" style="background-color: #f3f4f6; border-color: #d1d5db;">
+        <div class="card-body" style="text-align: center; padding: 2rem;">
+            <h3 style="color: #374151; margin-bottom: 1rem;">Medical Disclaimer - Dr Arim's Gut Reset Club</h3>
+            <div style="font-size: 0.875rem; color: #6b7280; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                <p><strong>FOR EDUCATIONAL AND AWARENESS PURPOSES ONLY</strong></p>
+                
+                <p>This digital health tracking tool, designed by Dr Arim, is intended solely for educational purposes and personal health awareness. It is NOT a substitute for professional medical advice, diagnosis, or treatment.</p>
+                
+                <p><strong>Important Medical Disclaimers:</strong></p>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>This tool does not provide medical diagnoses or treatment recommendations</li>
+                    <li>The information collected is for symptom awareness and educational purposes only</li>
+                    <li>Dr Arim and this platform assume no responsibility for any health decisions made based on this tool</li>
+                    <li>Individual health conditions vary significantly and require personalized medical evaluation</li>
+                    <li>This tool is not validated for clinical diagnosis or medical decision-making</li>
+                </ul>
+                
+                <p><strong>Always consult with qualified healthcare professionals for:</strong> Any concerning symptoms, medical diagnoses, treatment plans, medication decisions, or health condition management.</p>
+                
+                <p><strong>Emergency Warning:</strong> For any severe, persistent, or worsening symptoms, seek immediate medical attention.</p>
+                
+                <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #9ca3af;">
+                    © 2025 Dr Arim's Gut Reset Club. This educational tool is designed to promote health awareness and should be used in conjunction with, not as a replacement for, professional medical care.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
     <script src="app.js"></script>
 </body>
