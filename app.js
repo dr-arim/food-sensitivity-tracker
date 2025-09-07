@@ -255,6 +255,63 @@ class GutHealthTracker {
     document.getElementById('red-flag-section').style.display = 'block';
     }
 
+    setupRedFlagHandler() {
+        const redFlagForm = document.getElementById('red-flag-form');
+        if (redFlagForm) {
+            redFlagForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.processRedFlagChecklist();
+            });
+        }
+    }
+
+    processRedFlagChecklist() {
+        const formData = new FormData(document.getElementById('red-flag-form'));
+        const responses = {
+            blood: formData.get('blood'),
+            swallowing: formData.get('swallowing'),
+            weightloss: formData.get('weightloss'),
+            choking: formData.get('choking'),
+            chestpain: formData.get('chestpain')
+        };
+
+        // Check if any response is 'yes'
+        const hasRedFlags = Object.values(responses).includes('yes');
+
+        if (hasRedFlags) {
+            // Show warning and stop progression
+            document.getElementById('red-flag-section').innerHTML = `
+                <div class="red-flag-warning">
+                    <h2>⚠️ IMPORTANT MEDICAL ALERT</h2>
+                    <p><strong>Dr Arim's Recommendation:</strong></p>
+                    <p style="font-size: 1.2rem; margin: 1.5rem 0;">
+                        Based on your responses, please <strong>CONSULT YOUR DOCTOR OFFLINE IMMEDIATELY</strong> before continuing with this program.
+                    </p>
+                    <p>Your health and safety are Dr Arim's top priority. Please seek professional medical evaluation for the symptoms you've indicated.</p>
+                    <p style="margin-top: 2rem; font-size: 0.9rem; color: #7f1d1d;">
+                        You can return to this tracking tool after consulting with your healthcare provider.
+                    </p>
+                </div>
+            `;
+            return;
+        }
+
+        // All responses are 'no' - proceed to symptom tracking
+        alert("Dr Arim's screening complete! You may now proceed with the 7-day symptom tracking.");
+        
+        // Show symptom tracking sections
+        document.getElementById('progress-section').style.display = 'block';
+        document.getElementById('symptom-section').style.display = 'block';
+        document.getElementById('data-section').style.display = 'block';
+        document.getElementById('summary-section').style.display = 'block';
+        
+        // Hide red-flag section
+        document.getElementById('red-flag-section').style.display = 'none';
+
+        this.updateProgress();
+        this.updateSummaryStats();
+    }
+
     showSections() {
         console.log('Showing application sections...');
         
