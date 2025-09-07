@@ -1,3 +1,19 @@
+// Debug logging
+console.log('JavaScript file loaded successfully');
+
+// Test if DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM is ready');
+    
+    // Test registration form
+    const regForm = document.getElementById('registration-form');
+    console.log('Registration form found:', regForm);
+    
+    // Test red-flag form  
+    const redFlagForm = document.getElementById('red-flag-form');
+    console.log('Red-flag form found:', redFlagForm);
+});
+
 // Gut Health Tracking Application
 class GutHealthTracker {
     constructor() {
