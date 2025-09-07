@@ -43,6 +43,8 @@ class GutHealthTracker {
                 this.registerPatient();
             });
         }
+    // Add red-flag handler
+    this.setupRedFlagHandler();
 
         // Symptom form
         const symptomForm = document.getElementById('symptom-form');
