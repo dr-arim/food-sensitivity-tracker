@@ -248,9 +248,11 @@ class GutHealthTracker {
             patientIdInput.value = patientId;
         }
 
-        // Show success message and reveal other sections
-        this.showToast(`Patient registered successfully! ID: ${patientId}`);
-        this.showSections();
+      // Show success message with Dr Arim branding
+    alert(`Welcome to Dr Arim's Gut Reset Club!\nPatient registered successfully!\nPatient ID: ${patientId}`);
+
+    // Show red-flag checklist section (NOT symptom tracking yet)
+    document.getElementById('red-flag-section').style.display = 'block';
     }
 
     showSections() {
