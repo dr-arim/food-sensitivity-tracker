@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gut Health Tracking Journal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Week 1 — Gut Baseline Journal</h1>
+            <p class="subtitle">7-Day Symptom & Trigger Tracking System</p>
+        </header>
+
+        <!-- Patient Registration Section -->
+        <section class="card" id="registration-section">
+            <div class="card__header">
+                <h2>Patient Registration</h2>
+            </div>
+            <div class="card__body">
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="patient-name" class="form-label">Full Name *</label>
+                        <input type="text" id="patient-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-mobile" class="form-label">Mobile Number *</label>
+                        <input type="tel" id="patient-mobile" class="form-control" required placeholder="+91-9876543210">
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-email" class="form-label">Email Address *</label>
+                        <input type="email" id="patient-email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-id" class="form-label">Patient ID (Auto-generated)</label>
+                        <input type="text" id="patient-id" class="form-control" readonly>
+                    </div>
+                    <button type="submit" class="btn btn--primary">Register Patient</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Progress Indicator -->
+        <section class="progress-section" id="progress-section" style="display: none;">
+            <div class="card">
+                <div class="card__body">
+                    <h3>Week Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p class="progress-text" id="progress-text">Day 0 of 7 completed</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Symptom Entry Form -->
+        <section class="card" id="symptom-section" style="display: none;">
+            <div class="card__header">
+                <h2>Daily Symptom Entry</h2>
+            </div>
+            <div class="card__body">
+                <form id="symptom-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="symptom-date" class="form-label">Date *</label>
+                            <input type="date" id="symptom-date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="symptom-time" class="form-label">Time of Symptom *</label>
+                            <input type="time" id="symptom-time" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Symptoms Experienced *</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptoms" value="Bloating"> Bloating
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptoms" value="Abdominal Pain"> Abdominal Pain
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptoms" value="Acid Reflux"> Acid Reflux
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptoms" value="Stool Changes"> Stool Changes
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptoms" value="Gas/Flatulence"> Gas/Flatulence
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptoms" value="Nausea"> Nausea
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptoms" value="Constipation"> Constipation
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptoms" value="Diarrhea"> Diarrhea
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptoms" value="Other" id="other-checkbox"> Other
+                            </label>
+                        </div>
+                        <div class="form-group" id="other-symptom-group" style="display: none;">
+                            <input type="text" id="other-symptom" class="form-control" placeholder="Specify other symptom">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bsfs-scale" class="form-label">Bristol Stool Form Scale (BSFS) *</label>
+                        <select id="bsfs-scale" class="form-control" required>
+                            <option value="">Select stool type...</option>
+                            <option value="1">Type 1: Separate hard lumps (Constipation)</option>
+                            <option value="2">Type 2: Sausage-shaped, lumpy (Constipation)</option>
+                            <option value="3">Type 3: Sausage with cracks (Normal)</option>
+                            <option value="4">Type 4: Smooth sausage (Normal - Ideal)</option>
+                            <option value="5">Type 5: Soft blobs (Trending toward diarrhea)</option>
+                            <option value="6">Type 6: Fluffy, mushy pieces (Diarrhea)</option>
+                            <option value="7">Type 7: Watery, liquid (Diarrhea)</option>
+                        </select>
+                        <button type="button" class="btn btn--outline btn--sm" id="show-bsfs-reference">View BSFS Reference</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meal-description" class="form-label">What did you eat?</label>
+                        <textarea id="meal-description" class="form-control" rows="3" placeholder="Describe your meal..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meal-timing" class="form-label">Meal timing before symptom</label>
+                        <select id="meal-timing" class="form-control">
+                            <option value="">Select timing...</option>
+                            <option value="0-30min">0-30 minutes before</option>
+                            <option value="30min-1hr">30 minutes - 1 hour before</option>
+                            <option value="1-2hrs">1-2 hours before</option>
+                            <option value="2-4hrs">2-4 hours before</option>
+                            <option value="4+hrs">4+ hours before</option>
+                            <option value="not-related">Not related to meal</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="stress-level" class="form-label">Stress Level (1-10)</label>
+                            <input type="range" id="stress-level" class="range-input" min="1" max="10" value="5">
+                            <span class="range-value" id="stress-value">5</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="sleep-quality" class="form-label">Sleep Quality Previous Night (1-10)</label>
+                            <input type="range" id="sleep-quality" class="range-input" min="1" max="10" value="5">
+                            <span class="range-value" id="sleep-value">5</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="severity-scale" class="form-label">Symptom Severity (0-10) *</label>
+                        <input type="range" id="severity-scale" class="range-input" min="0" max="10" value="5" required>
+                        <span class="range-value severity-value" id="severity-value">5</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additional-notes" class="form-label">Additional Notes</label>
+                        <textarea id="additional-notes" class="form-control" rows="3" placeholder="Any additional observations or notes..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary">Log Symptom Entry</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Bristol Stool Form Scale Reference Modal -->
+        <div class="modal hidden" id="bsfs-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Bristol Stool Form Scale Reference</h3>
+                    <button type="button" class="modal-close" id="close-bsfs-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="bsfs-reference" id="bsfs-reference">
+                        <!-- BSFS reference will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Display Section -->
+        <section class="card" id="data-section" style="display: none;">
+            <div class="card__header">
+                <h2>Symptom Entries</h2>
+                <div class="header-actions">
+                    <button class="btn btn--outline" id="export-csv">Export CSV</button>
+                    <button class="btn btn--secondary" id="clear-data">Clear All Data</button>
+                </div>
+            </div>
+            <div class="card__body">
+                <div class="filters">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="filter-start-date" class="form-label">From Date</label>
+                            <input type="date" id="filter-start-date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-end-date" class="form-label">To Date</label>
+                            <input type="date" id="filter-end-date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="search-entries" class="form-label">Search</label>
+                            <input type="text" id="search-entries" class="form-control" placeholder="Search symptoms, notes...">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table" id="entries-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Symptoms</th>
+                                <th>BSFS</th>
+                                <th>Severity</th>
+                                <th>Stress</th>
+                                <th>Sleep</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="entries-tbody">
+                            <!-- Entries will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Statistics -->
+        <section class="card" id="summary-section" style="display: none;">
+            <div class="card__header">
+                <h2>Summary Statistics</h2>
+            </div>
+            <div class="card__body">
+                <div class="stats-grid" id="stats-grid">
+                    <!-- Statistics will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Success Message -->
+    <div class="toast hidden" id="success-toast">
+        <div class="toast-content">
+            <span class="toast-message" id="toast-message"></span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
